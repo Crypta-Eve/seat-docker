@@ -119,7 +119,6 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - eveseat/seat
           - ghcr.io/crypta-eve/seat
     steps:
       - name: Get artifact name
@@ -151,8 +150,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ secrets.GHCR_USERNAME }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Login to Docker Hub
       #   uses: docker/login-action@v3
